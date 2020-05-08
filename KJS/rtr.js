@@ -8,9 +8,6 @@ var katana = new KJS_library.K();
 
 module.exports.Router = class Router {
     constructor(routes) {
-        // This is obviously a Pre-Beta Framework, so it hasn't been tested, but in theory a new dynamic pathname/regex // pair should be able to be added here, and work imeadiatly without complication, if only the world always
-        // worked as expected. But seriously a new pair should be able to be pluged straight in.
-
         this.mConst =
         {
             ":[FNAME]": "\\w+\\.\\w+",
@@ -23,7 +20,7 @@ module.exports.Router = class Router {
         this.routingManifest = this.createManifest(routes);
 
         console.log(this.routingManifest);
-    };// !fn()
+    };//! ---- ---- ---- ---- ---- ---- ---- ----
 
 
 
@@ -66,7 +63,7 @@ module.exports.Router = class Router {
         };
 
         return manifest;
-    };// !fn()
+    };//! ---- ---- ---- ---- ---- ---- ---- ----
 
 
 
@@ -74,23 +71,26 @@ module.exports.Router = class Router {
     routeRequest(KJS_ParsedReq, HttpRes) {
         var handle = new handlers.Handler();
         var reqpath = KJS_ParsedReq.pathname;
-        var contenttype  = KJS_ParsedReq.contenttype;
-        
+        var contenttype = KJS_ParsedReq.contenttype;
+        var match = false;
+
         this.routingManifest.forEach((obj, i) => {
             if (obj.re.exec(reqpath) !== null)
-            {                                                        
+            {
                 katana.log_location('Manifest Routing Request', obj);//! [-T-E-S-T-]
+
+                match = true;
 
                 if (obj.dynamic === true) handle.dynamic(reqpath, contenttype, obj.pathname, HttpRes);
                 if (obj.dynamic === false) handle.static(reqpath, contenttype, obj.pathname, HttpRes);
-
-                return true;
             };
-
-//          this.handle_doesNotExist(reqPath);
-            return false;
         });
-    };// !fn()
+
+        if (!match)  handle.doesNotExist(HttpRes);
+    };//! ---- ---- ---- ---- ---- ---- ---- ----
 
 
-};//! END ROUTER CLASS
+
+
+
+};// ================[ -End_Router_Class- ]================================================================    

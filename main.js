@@ -4,13 +4,18 @@ const KJS_Libarary = require('./KJS/lib');
 var katana = new KJS_Libarary.K();
 
 
-var router = new rtr.Router(manifest = {
+var router = new rtr.Router(manifest = { 
 
     // OPENING PAGES/USER-INTERFACE
     "/Public/views/page/index.html"         :   "/",
     "/Public/views/page/index.html"         :   "/index",
     "/Public/views/page/about.html"         :   "/about",
     "/Public/views/page/contact.html"       :   "/contact",
+
+    // HTTP STATUS CODES
+    "/Public/views/errorMsg/err401.html"    :   "/status/err401.html",
+    "/Public/views/errorMsg/err403.html"    :   "/status/err403.html",
+    "/Public/views/errorMsg/err404.html"    :   "/status/err404.html",
 
     // STYLE-SHEETS
     "/Public/styles/byElement.css"          :   "/style/byElement.css",
