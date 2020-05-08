@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Manrope&display=swap');
+body
+{
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #047;
+    font-family: 'Manrope', sans-serif;
+}
+
+h1
+{
+    display: block;
+    font-size: 48px;
+    font-family: 'Manrope', sans-serif;
+    margin: 8px;
+    padding: 0;
+    color: #EC9;
+}
+
+h2
+{
+    display: block;
+    font-size: 40px;
+    font-family: 'Manrope', sans-serif;
+    margin: 8px;
+    padding: 0;
+    color: #ADF;
+}
